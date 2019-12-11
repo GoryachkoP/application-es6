@@ -1,5 +1,5 @@
 import { HeaderComponent } from './components/header.component'
+import { NavigationComponent } from './components/navigation.component';
+new HeaderComponent('header')
 
-const header = new HeaderComponent('header')
-
-console.log(header)
+const navigation = new NavigationComponent('navigation')
