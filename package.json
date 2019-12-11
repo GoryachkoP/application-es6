@@ -4,7 +4,9 @@
   "description": "js native blog",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,11 @@
   "bugs": {
     "url": "https://github.com/GoryachkoP/application-es6/issues"
   },
-  "homepage": "https://github.com/GoryachkoP/application-es6#readme"
+  "homepage": "https://github.com/GoryachkoP/application-es6#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.0-beta.11",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
 }
