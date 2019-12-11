@@ -1,0 +1,27 @@
+{
+  "name": "application-es6",
+  "version": "1.0.0",
+  "description": "js native blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoryachkoP/application-es6.git"
+  },
+  "keywords": [
+    "es6-8",
+    "blog",
+    "html",
+    "css",
+    "webpack",
+    "nodejs"
+  ],
+  "author": "Pavel Goryachko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GoryachkoP/application-es6/issues"
+  },
+  "homepage": "https://github.com/GoryachkoP/application-es6#readme"
+}
