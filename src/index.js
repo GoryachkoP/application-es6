@@ -1,1 +1,3 @@
-console.log('')
+async function app() {
+    await fetch('ggg')
+}

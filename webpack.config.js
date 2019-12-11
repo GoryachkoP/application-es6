@@ -6,7 +6,7 @@ const HTMLPlugin = require('html-webpack-plugin')
 
 module.exports = {
     // вхідна точка
-    entry: ['./src/index.js'],
+    entry: ['@babel/polyfill', './src/index.js'],
     // куди ми будемо складувати, глобальна змінна __dirname яка відповідає за поточний шлях папки
     // збірник усіх скриптів прийнято називати bundle.js
     output: {
@@ -37,5 +37,11 @@ module.exports = {
     resolve: {
         // розширення які вебпак повен автоматично розуміти
         extensions: ['.js']
+    },
+
+    module: {
+        rules: [
+            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
+        ]
     }
 }
