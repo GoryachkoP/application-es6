@@ -18,6 +18,10 @@ export class PostComponent extends Component {
     this.$el.insertAdjacentHTML('afterbegin', html.join(' '))
   }
 
+  init() {
+    this.$el.addEventListener('click', buttonHandler.bind(this))
+  }
+
   onHide() {
     this.$el.innerHTML = ''
   }
@@ -28,11 +32,13 @@ function renderPost(post) {
     ? '<li class="tag tag-blue tag-rounded">Новина</li>'
     : '<li class="tag tag-rounded">Замітка</li>'
 
-  const button = '<button class="button-round button-small button-primary">SAVE</button>'
+  const button = (JSON.parse(localStorage.getItem('favorites') || []).includes(post.id))
+    ? `<button class="button-round button-small button-danger" data-id="${post.id}">DELETE</button>`
+    : `<button class="button-round button-small button-primary" data-id="${post.id}">SAVE</button>`
   return `
     <div class="panel">
       <div class="panel-head">
-        <p class="panel-title">${ post.title}</p>
+        <p class="panel-title" data-postname="${ post.title}">${post.title}</p>
         <ul class="tags">
           ${ tag}
         </ul>
@@ -46,4 +52,30 @@ function renderPost(post) {
       </div>
     </div>
   `
+}
+
+function buttonHandler(event) {
+
+  const $el = event.target
+  const id = $el.dataset.id
+  if (id) {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || []
+
+    if (favorites.includes(id)) {
+      // delete
+      $el.textContent = 'SAVE'
+      $el.classList.add('button-primary')
+      $el.classList.remove('button-danger')
+      favorites = favorites.filter(fId => fId !== id)
+    } else {
+      // add
+      $el.classList.remove('button-primary')
+      $el.classList.add('button-danger')
+      $el.textContent = "DELETE"
+      favorites.push(id)
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(favorites))
+  }
+
 }
